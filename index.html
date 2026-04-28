@@ -1,22 +1,194 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Resume</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prateek Hoori Lal - Senior Software Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
         }
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+
+        /* Print styling to ensure it generates a perfect PDF */
+        @media print {
+            body {
+                background-color: white;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            .a4-container {
+                box-shadow: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+            a {
+                text-decoration: none !important;
+                color: #1f2937 !important;
+            }
+        }
+        
+        /* A4 aspect ratio approximation for web view */
+        .a4-container {
+            max-width: 210mm;
+            margin: 2rem auto;
+            background: white;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body>
-    <iframe src="Prateek_Lal_Resume.pdf"></iframe>
+<body class="antialiased selection:bg-blue-200 selection:text-blue-900">
+
+    <!-- Floating Print Button (Hidden on Print) -->
+    <div class="fixed top-6 right-6 no-print z-50">
+        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded shadow-lg transition duration-200 flex items-center gap-2">
+            <i class="fas fa-file-pdf"></i> Save as PDF
+        </button>
+    </div>
+
+    <!-- Resume Document -->
+    <main class="a4-container p-10 sm:p-14 md:p-16 text-sm sm:text-base">
+        
+        <!-- Header -->
+        <header class="border-b-2 border-gray-200 pb-6 mb-6">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 tracking-tight uppercase">Prateek Hoori Lal</h1>
+            <h2 class="text-lg sm:text-xl text-blue-600 font-semibold mt-1 tracking-wide uppercase">Senior Software Engineer / Java Developer</h2>
+            
+            <div class="flex flex-wrap gap-x-6 gap-y-2 mt-4 text-gray-600 text-sm">
+                <a href="mailto:prateekhlal@outlook.com" class="flex items-center gap-2 hover:text-blue-600 transition">
+                    <i class="fas fa-envelope"></i> prateekhlal@outlook.com
+                </a>
+                <span class="flex items-center gap-2">
+                    <i class="fas fa-phone"></i> +91-9148791331
+                </span>
+                <a href="https://www.linkedin.com/in/prateek-lal-aa362963/" target="_blank" class="flex items-center gap-2 hover:text-blue-600 transition text-blue-600">
+                    <i class="fab fa-linkedin"></i> LinkedIn Profile
+                </a>
+            </div>
+        </header>
+
+        <!-- Summary -->
+        <section class="mb-6">
+            <p class="text-gray-700 leading-relaxed text-justify">
+                Energy-driven Senior Software Engineer offering over <strong>9.5 years</strong> of rich and qualitative experience in enterprise software development, Core Java, and Spring Boot. Demonstrated expertise in Algorithms, Data Structures, OOP, and Design Patterns. Proven track record in managing the end-to-end SDLC, successfully delivering cross-functional projects, and architecting scalable backend solutions.
+            </p>
+        </section>
+
+        <!-- Key Achievements (Highlighted for impact) -->
+        <section class="mb-6 bg-blue-50/50 p-4 rounded-lg border border-blue-100">
+            <h3 class="text-md font-bold text-gray-900 uppercase tracking-wider mb-3 flex items-center gap-2">
+                <i class="fas fa-award text-blue-600"></i> Key Achievements & Accolades
+            </h3>
+            <ul class="list-disc list-outside ml-5 text-gray-700 space-y-1 text-sm">
+                <li><strong>System Optimization:</strong> Architected and implemented a custom rate limiter feature, successfully reducing high event influx by <strong>45%</strong>.</li>
+                <li><strong>API Integration:</strong> Awarded for the proficient and highly secure integration of Swagger API across 4 distinct enterprise Microservices.</li>
+                <li><strong>Global Collaboration:</strong> Partnered with the Israel Engineering Team to successfully deploy the critical XStream security framework.</li>
+                <li><strong>Code Quality:</strong> Acknowledged continuously by leadership for the swift resolution of critical production bugs and patches.</li>
+            </ul>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="mb-6">
+            <h3 class="text-md font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-2 mb-3">Technical Skills</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-700">
+                <div><span class="font-semibold text-gray-900">Languages:</span> Core Java, J2EE</div>
+                <div><span class="font-semibold text-gray-900">Frameworks:</span> Spring Boot, Hibernate, Kafka, Docker</div>
+                <div><span class="font-semibold text-gray-900">Databases:</span> Oracle, DB2, Postgres</div>
+                <div><span class="font-semibold text-gray-900">Servers:</span> WebSphere, JBoss</div>
+                <div><span class="font-semibold text-gray-900">CI/CD & Tools:</span> Jenkins, Maven, Git/Bitbucket</div>
+                <div><span class="font-semibold text-gray-900">Core Concepts:</span> Data Structures, Algorithms, Design Patterns</div>
+            </div>
+        </section>
+
+        <!-- Work Experience -->
+        <section class="mb-6">
+            <h3 class="text-md font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-2 mb-4">Work Experience</h3>
+
+            <!-- HCL -->
+            <div class="mb-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-1">
+                    <h4 class="text-lg font-bold text-gray-900">HCL Software</h4>
+                    <span class="text-sm font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded">Aug 2024 &ndash; Dec 2025</span>
+                </div>
+                <div class="text-sm font-semibold text-gray-700 italic mb-2">Software Engineer III</div>
+                <div class="text-sm mb-3 text-gray-700">
+                    <strong>Project:</strong> <a href="https://www.hcl-software.com/devops-test/offerings/devops-test-ui" target="_blank" class="text-blue-600 hover:underline font-medium">HCL DevOps Test UI (DTUI) <i class="fas fa-external-link-alt text-xs ml-1"></i></a>
+                    <p class="mt-1 text-xs text-gray-600">An automated software testing solution designed to improve continuous testing, efficiency, and integration with DevOps processes.</p>
+                </div>
+                <ul class="list-disc list-outside ml-5 text-gray-700 space-y-1.5 text-sm">
+                    <li>Designed, developed, and maintained core Java-based backend features, ensuring high scalability, performance, and system reliability.</li>
+                    <li>Built and maintained highly scalable APIs and services to facilitate seamless integration directly with CI/CD workflows.</li>
+                    <li>Conducted technical spikes to explore and evaluate architectural solutions for complex requirements, ensuring feasibility and alignment with the product roadmap.</li>
+                    <li>Mentored junior developers, conducted rigorous code reviews, and enforced industry best practices in software development.</li>
+                </ul>
+            </div>
+
+            <!-- Cisco -->
+            <div class="mb-6">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-1">
+                    <h4 class="text-lg font-bold text-gray-900">Cisco Systems</h4>
+                    <span class="text-sm font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded">Sep 2017 &ndash; Apr 2024</span>
+                </div>
+                <div class="text-sm font-semibold text-gray-700 italic mb-2">Software Engineer I</div>
+                <div class="text-sm mb-3 text-gray-700">
+                    <strong>Project:</strong> <a href="https://www.cisco.com/c/en/us/support/cloud-systems-management/evolved-programmable-network-epn-manager/series.html" target="_blank" class="text-blue-600 hover:underline font-medium">Evolved Programmable Network (EPNM/CNC) <i class="fas fa-external-link-alt text-xs ml-1"></i></a> - Inventory & Fault Teams
+                </div>
+                <ul class="list-disc list-outside ml-5 text-gray-700 space-y-1.5 text-sm">
+                    <li>Architected software solutions and provided technical guidance using Java technologies, ensuring strict adherence to best practices and coding standards.</li>
+                    <li>Followed Agile methodologies to debug complex algorithm simulations, identify system failures, and measure product performance.</li>
+                    <li>Managed version control, conducted comprehensive unit testing, and developed new technical requirements for various clients across multiple EOM/SIF modules.</li>
+                </ul>
+            </div>
+
+            <!-- Manhattan Associates -->
+            <div class="mb-4">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-1">
+                    <h4 class="text-lg font-bold text-gray-900">Manhattan Associates Inc.</h4>
+                    <span class="text-sm font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded">Aug 2015 &ndash; Sep 2017</span>
+                </div>
+                <div class="text-sm font-semibold text-gray-700 italic mb-2">Software Developer</div>
+                <div class="text-sm mb-3 text-gray-700">
+                    <strong>Projects:</strong> Enterprise Order Management (EOM) & Store Inventory & Fulfillment (SIF) <br>
+                    <strong>Clients:</strong> Michael Kors, Bed Bath and Beyond
+                </div>
+                <ul class="list-disc list-outside ml-5 text-gray-700 space-y-1.5 text-sm">
+                    <li>Successfully increased code coverage from minimal levels to <strong>90%</strong> by implementing comprehensive unit test cases.</li>
+                    <li>Coordinated directly with consultants to prepare functional and technical design documents, successfully estimating timeframes for new module delivery.</li>
+                    <li>Developed mobile-optimized solutions for retail store environments, providing real-time order acknowledgment and inventory tracking.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section>
+            <h3 class="text-md font-bold text-gray-900 uppercase tracking-wider border-b border-gray-200 pb-2 mb-3">Education</h3>
+            <div class="flex flex-col space-y-3">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h4 class="font-bold text-gray-900 text-sm">Post-Graduation Diploma in Advance Computing (PGDAC)</h4>
+                        <div class="text-gray-700 text-sm">CDAC Pune</div>
+                    </div>
+                    <span class="text-sm text-gray-500">2015</span>
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h4 class="font-bold text-gray-900 text-sm">Bachelor of Technology (B.Tech)</h4>
+                        <div class="text-gray-700 text-sm">Sam Higginbottom University of Agriculture, Technology and Sciences</div>
+                    </div>
+                    <span class="text-sm text-gray-500">2014</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
 </body>
 </html>
