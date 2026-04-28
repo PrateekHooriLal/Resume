@@ -19,18 +19,19 @@
         /* Print styling for Option 2 */
         @media print {
             @page {
-                margin: 8mm;
+                margin: 10mm 15mm;
                 size: A4;
             }
             body {
                 background-color: white !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
+                color: #1e293b !important;
             }
             .a4-container {
                 box-shadow: none !important;
                 margin: 0 !important;
-                padding: 0mm !important; 
+                padding: 0 !important; 
                 max-width: 100% !important;
                 border: none !important;
                 width: 100% !important;
@@ -39,21 +40,38 @@
                 display: none !important;
             }
             
+            /* Force Header to stay as a compact row in print */
             header {
                 display: flex !important;
                 flex-direction: row !important;
+                justify-content: space-between !important;
                 align-items: center !important;
                 text-align: left !important;
-                padding-bottom: 2rem !important;
+                padding-bottom: 1.5rem !important;
+                border-bottom: 3px solid #1e1b4b !important;
             }
             header .flex-1 { text-align: left !important; }
             header h1 { font-size: 2.2rem !important; color: #1e1b4b !important; }
-            header h2 { font-size: 0.9rem !important; }
-            .profile-photo { width: 100px !important; height: 100px !important; border: 2px solid #e0e7ff !important; }
+            header h2 { font-size: 1rem !important; color: #4338ca !important; }
+            .profile-photo { width: 90px !important; height: 90px !important; border: 2px solid #e0e7ff !important; margin-top: 0 !important; }
             
+            /* Compact Contact Info for Print */
+            .contact-container {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                gap: 0.75rem !important;
+                border-top: none !important;
+                padding-top: 0 !important;
+                font-size: 0.75rem !important;
+            }
+            .contact-container span.hidden { display: inline !important; color: #cbd5e1 !important; }
+
+            /* Prevent sections from splitting across pages */
             section, .experience-item, .accolades-box, .education-item {
                 break-inside: avoid !important;
                 page-break-inside: avoid !important;
+                margin-bottom: 1.5rem !important;
             }
 
             .experience-line {
@@ -72,6 +90,7 @@
             .accolades-box {
                 background-color: #1e1b4b !important;
                 color: white !important;
+                padding: 1.25rem !important;
             }
         }
         
@@ -173,7 +192,7 @@
                         </div>
                     </div>
                     
-                    <div class="flex flex-col md:flex-row items-center gap-x-4 gap-y-3 text-slate-600 font-semibold border-t border-indigo-50 pt-6">
+                    <div class="contact-container flex flex-col md:flex-row items-center gap-x-4 gap-y-3 text-slate-600 font-semibold border-t border-indigo-50 pt-6">
                         <a href="mailto:prateekhlal@outlook.com" class="hover:text-indigo-900 flex items-center gap-2 transition text-[11px] sm:text-xs">
                             <i class="fas fa-envelope text-indigo-300"></i> prateekhlal@outlook.com
                         </a>
