@@ -11,26 +11,26 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f1f5f9;
+            background-color: #f8fafc;
             color: #1e293b;
             line-height: 1.5;
         }
 
-        /* Print styling to ensure it generates a perfect PDF without cutting */
+        /* Print styling for Option 2 */
         @media print {
             @page {
-                margin: 10mm;
+                margin: 8mm;
                 size: A4;
             }
             body {
-                background-color: white;
+                background-color: white !important;
                 -webkit-print-color-adjust: exact !important;
                 print-color-adjust: exact !important;
             }
             .a4-container {
                 box-shadow: none !important;
                 margin: 0 !important;
-                padding: 5mm 10mm !important; /* Increased padding for print */
+                padding: 0mm !important; 
                 max-width: 100% !important;
                 border: none !important;
                 width: 100% !important;
@@ -38,32 +38,49 @@
             .no-print {
                 display: none !important;
             }
+            
+            header {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                text-align: left !important;
+                padding-bottom: 2rem !important;
+            }
+            header .flex-1 { text-align: left !important; }
+            header h1 { font-size: 2.2rem !important; color: #1e1b4b !important; }
+            header h2 { font-size: 0.9rem !important; }
+            .profile-photo { width: 100px !important; height: 100px !important; border: 2px solid #e0e7ff !important; }
+            
+            section, .experience-item, .accolades-box, .education-item {
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+            }
+
             .experience-line {
                 display: block !important;
-                border-left: 1px solid #cbd5e1 !important;
+                border-left: 2px solid #e0e7ff !important;
             }
             a {
                 text-decoration: none !important;
-                color: #1e293b !important;
+                color: #1e1b4b !important;
             }
             .skill-tag {
-                background-color: #f8fafc !important;
-                border: 1px solid #e2e8f0 !important;
+                background-color: #f5f7ff !important;
+                border: 1px solid #e0e7ff !important;
+                color: #3730a3 !important;
             }
-            /* Maintain circular photo on print */
-            .profile-photo {
-                border-radius: 50% !important;
-                border: 2px solid #e2e8f0 !important;
+            .accolades-box {
+                background-color: #1e1b4b !important;
+                color: white !important;
             }
         }
         
-        /* A4 aspect ratio approximation for web view */
         .a4-container {
             max-width: 210mm;
             margin: 2rem auto;
             background: white;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-            border: 1px solid #e2e8f0;
+            box-shadow: 0 25px 50px -12px rgba(30, 27, 75, 0.15);
+            border: 1px solid #e0e7ff;
             position: relative;
         }
 
@@ -71,6 +88,7 @@
             letter-spacing: 0.15em;
             position: relative;
             display: inline-block;
+            color: #1e1b4b;
         }
 
         .section-title::after {
@@ -80,127 +98,130 @@
             left: 0;
             width: 32px;
             height: 3px;
-            background-color: #0f172a;
+            background-color: #4338ca;
         }
 
         .skill-tag {
-            background-color: #f8fafc;
-            border: 1px solid #f1f5f9;
+            background-color: #f5f7ff;
+            border: 1px solid #e0e7ff;
             padding: 2px 10px;
             border-radius: 6px;
             font-size: 0.7rem;
             font-weight: 600;
-            color: #475569;
+            color: #3730a3;
             display: inline-block;
         }
 
         .ex-tag {
             font-size: 0.65rem;
-            letter-spacing: 0.25em;
-            color: #94a3b8;
+            letter-spacing: 0.3em;
+            color: #818cf8;
             font-weight: 800;
             text-transform: uppercase;
         }
 
-        /* Optimized Profile Photo (Far Right) */
+        /* Profile Photo Settings */
         .profile-photo {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%; /* Make it circular */
+            border-radius: 50%;
             object-fit: cover;
-            /* Beautification: Stylized shadow and clean border */
             border: 4px solid white;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            background-color: #f8fafc;
+            box-shadow: 0 10px 15px -3px rgba(67, 56, 202, 0.2);
+            background-color: #f5f7ff;
         }
         
-        /* Placeholder Styling (if image fails) */
         .profile-photo-placeholder {
-            width: 130px;
-            height: 130px;
             border-radius: 50%;
-            background-color: #f8fafc;
-            border: 2px dashed #cbd5e1;
+            background-color: #f5f7ff;
+            border: 2px dashed #c7d2fe;
             display: flex;
             align-items: center;
-            justify-center;
-            color: #94a3b8;
-            font-size: 3rem;
+            justify-content: center;
+            color: #818cf8;
+        }
+
+        @media (max-width: 768px) {
+            .profile-photo, .profile-photo-placeholder { width: 100px; height: 100px; }
+            h1 { font-size: 1.875rem !important; }
+            h2 { font-size: 0.875rem !important; }
+        }
+        @media (min-width: 769px) {
+            .profile-photo, .profile-photo-placeholder { width: 130px; height: 130px; }
         }
     </style>
 </head>
-<body class="antialiased selection:bg-slate-200 selection:text-slate-900">
+<body class="antialiased selection:bg-indigo-100 selection:text-indigo-900">
 
     <div class="fixed top-6 right-6 no-print z-50">
-        <button onclick="window.print()" class="bg-slate-900 hover:bg-black text-white font-bold py-3.5 px-8 rounded-full shadow-2xl transition duration-300 flex items-center gap-2 transform hover:scale-105 active:scale-95">
+        <button onclick="window.print()" class="bg-indigo-950 hover:bg-black text-white font-bold py-3 px-6 rounded-full shadow-2xl transition duration-300 flex items-center gap-2 transform hover:scale-105 active:scale-95 text-sm">
             <i class="fas fa-file-pdf"></i> Save PDF
         </button>
     </div>
 
-    <main class="a4-container p-8 sm:p-12 md:p-14 text-[13px]">
+    <main class="a4-container p-6 sm:p-10 md:p-14 text-[13px]">
         
-        <header class="border-b-4 border-slate-900 pb-10 mb-10">
-            <div class="flex flex-col md:flex-row items-center md:items-stretch gap-10">
+        <header class="border-b-4 border-indigo-950 pb-8 mb-10">
+            <div class="flex flex-col md:flex-row items-center md:items-stretch gap-6 md:gap-10">
                 
                 <div class="flex-1 text-center md:text-left flex flex-col justify-between">
                     <div>
-                        <div class="ex-tag mb-2">Ex-Cisco / Ex-HCL / Ex-Manh</div>
-                        <h1 class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tighter uppercase leading-none mb-3">Prateek Hoori Lal</h1>
-                        <div class="flex flex-wrap justify-center md:justify-start items-center gap-3 mb-6">
-                            <h2 class="text-lg font-bold text-slate-500 uppercase tracking-widest">Senior Software Engineer</h2>
-                            <span class="h-4 w-[2px] bg-slate-300 hidden md:block"></span>
-                            <span class="text-slate-400 font-bold tracking-tight uppercase whitespace-nowrap">9.5+ Years Experience</span>
+                        <div class="ex-tag mb-2 tracking-[0.3em]">Ex-Cisco / Ex-HCL / Ex-Manh</div>
+                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-indigo-950 tracking-tighter uppercase leading-none mb-3">Prateek Hoori Lal</h1>
+                        <div class="flex flex-wrap justify-center md:justify-start items-center gap-2 sm:gap-3 mb-6">
+                            <h2 class="text-sm sm:text-base md:text-lg font-bold text-indigo-600 uppercase tracking-widest">Senior Software Engineer</h2>
+                            <span class="h-4 w-[2px] bg-indigo-100 hidden md:block"></span>
+                            <span class="text-indigo-400 font-bold tracking-tight uppercase whitespace-nowrap text-[11px] sm:text-xs">9.5+ Years Experience</span>
                         </div>
                     </div>
                     
-                    <div class="flex flex-col md:flex-row items-center md:items-center gap-x-4 gap-y-2 text-slate-600 font-semibold border-t border-slate-100 pt-6">
-                        <a href="mailto:prateekhlal@outlook.com" class="hover:text-slate-900 flex items-center gap-2 transition text-xs">
-                            <i class="fas fa-envelope text-slate-400"></i> prateekhlal@outlook.com
+                    <div class="flex flex-col md:flex-row items-center gap-x-4 gap-y-3 text-slate-600 font-semibold border-t border-indigo-50 pt-6">
+                        <a href="mailto:prateekhlal@outlook.com" class="hover:text-indigo-900 flex items-center gap-2 transition text-[11px] sm:text-xs">
+                            <i class="fas fa-envelope text-indigo-300"></i> prateekhlal@outlook.com
                         </a>
-                        <span class="text-slate-200 hidden md:inline">|</span>
-                        <span class="flex items-center gap-2 text-xs">
-                            <i class="fas fa-phone text-slate-400"></i> +91-9148791331
-                        </a>
-                        <span class="text-slate-200 hidden md:inline">|</span>
-                        <a href="https://www.linkedin.com/in/prateek-lal-aa362963/" target="_blank" class="hover:text-slate-900 flex items-center gap-2 transition text-xs" title="LinkedIn Profile">
+                        <span class="text-indigo-100 hidden md:inline">|</span>
+                        <span class="flex items-center gap-2 text-[11px] sm:text-xs">
+                            <i class="fas fa-phone text-indigo-300"></i> +91-9148791331
+                        </span>
+                        <span class="text-indigo-100 hidden md:inline">|</span>
+                        <a href="https://www.linkedin.com/in/prateek-lal-aa362963/" target="_blank" class="hover:text-indigo-900 flex items-center gap-2 transition text-[11px] sm:text-xs" title="LinkedIn Profile">
                             <i class="fab fa-linkedin text-[#0077b5]"></i> Profile
                         </a>
                     </div>
                 </div>
 
-                <div class="flex-shrink-0 flex items-center justify-center pt-6 md:pt-0">
-                    <img src="profile.jpg" alt="Prateek Hoori Lal" class="profile-photo" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\'profile-photo-placeholder\'><i class=\'fas fa-user\'></i></div>';">
+                <div class="flex-shrink-0 flex items-center justify-center pt-2 md:pt-0">
+                    <img src="profile.jpg" alt="Prateek Hoori Lal" class="profile-photo" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\'profile-photo-placeholder\'><i class=\'fas fa-user text-3xl\'></i></div>';">
                 </div>
             </div>
         </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
             
             <div class="md:col-span-8">
                 
                 <section class="mb-10">
-                    <h3 class="section-title text-[11px] font-black text-slate-900 uppercase mb-5">Professional Profile</h3>
+                    <h3 class="section-title text-[11px] font-black text-indigo-950 uppercase mb-5">Professional Profile</h3>
                     <p class="text-slate-600 leading-relaxed text-justify">
                         Energy-driven Professional offering over <strong>9.5 years</strong> of rich and qualitative experience in Software Development, Java, and Spring Boot. Demonstrated expertise in Algorithms, Data Structures, OOP, and Design Patterns. Proficient in managing end-to-end SDLC from requirement gathering to high-performance deployment.
                     </p>
                 </section>
 
                 <section class="mb-10">
-                    <h3 class="section-title text-[11px] font-black text-slate-900 uppercase mb-8">Work Experience</h3>
+                    <h3 class="section-title text-[11px] font-black text-indigo-950 uppercase mb-8">Work Experience</h3>
                     
-                    <div class="relative pl-8 experience-line border-l-2 border-slate-100">
-                        <div class="mb-12 relative">
-                            <div class="absolute -left-[41px] top-1 w-5 h-5 bg-white border-4 border-slate-900 rounded-full"></div>
+                    <div class="relative pl-8 experience-line border-l-2 border-indigo-50">
+                        <!-- HCL -->
+                        <div class="mb-10 relative experience-item">
+                            <div class="absolute -left-[41px] top-1 w-5 h-5 bg-white border-4 border-indigo-950 rounded-full"></div>
                             <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
-                                <h4 class="text-lg font-extrabold text-slate-900">HCL Software</h4>
-                                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Aug 2024 &ndash; Dec 2025</span>
+                                <h4 class="text-lg font-extrabold text-indigo-950">HCL Software</h4>
+                                <span class="text-[10px] font-black text-indigo-300 uppercase tracking-widest">Aug 2024 &ndash; Dec 2025</span>
                             </div>
-                            <div class="text-sm font-bold text-slate-500 mb-3 uppercase tracking-wide">Software Engineer III</div>
-                            <div class="text-xs bg-slate-50 border border-slate-100 p-4 rounded-lg mb-4">
-                                <span class="font-black text-slate-900 uppercase tracking-tighter">Project:</span> <a href="https://www.hcl-software.com/devops-test/offerings/devops-test-ui" target="_blank" class="text-blue-600 font-bold hover:underline">HCL DevOps Test UI (DTUI) <i class="fas fa-external-link-alt text-[10px]"></i></a>
-                                <p class="text-slate-500 mt-2 leading-relaxed">Automated testing solution designed to improve continuous testing, efficiency, and integration with DevOps processes.</p>
+                            <div class="text-sm font-bold text-indigo-500 mb-3 uppercase tracking-wide">Software Engineer III</div>
+                            <div class="text-xs bg-indigo-50/30 border border-indigo-100 p-4 rounded-lg mb-4">
+                                <span class="font-black text-indigo-950 uppercase tracking-tighter text-[10px]">Project:</span> <a href="https://www.hcl-software.com/devops-test/offerings/devops-test-ui" target="_blank" class="text-indigo-700 font-bold hover:underline">HCL DevOps Test UI (DTUI) <i class="fas fa-external-link-alt text-[10px]"></i></a>
+                                <p class="text-slate-500 mt-2 leading-relaxed italic">Automated testing solution designed to improve continuous testing, efficiency, and integration with DevOps processes.</p>
                             </div>
-                            <ul class="list-disc list-outside ml-4 text-slate-600 space-y-2.5">
+                            <ul class="list-disc list-outside ml-4 text-slate-600 space-y-2">
                                 <li>Architected and maintained core <strong>Java-based modules</strong> for maximum scalability.</li>
                                 <li>Conducted technical spikes to evaluate architectural alignment with long-term roadmap.</li>
                                 <li>Developed and optimized scalable APIs for seamless <strong>CI/CD integration</strong>.</li>
@@ -208,34 +229,39 @@
                             </ul>
                         </div>
 
-                        <div class="mb-12 relative">
-                            <div class="absolute -left-[41px] top-1 w-5 h-5 bg-white border-4 border-slate-400 rounded-full"></div>
+                        <!-- Cisco -->
+                        <div class="mb-10 relative experience-item">
+                            <div class="absolute -left-[41px] top-1 w-5 h-5 bg-white border-4 border-indigo-400 rounded-full"></div>
                             <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
-                                <h4 class="text-lg font-extrabold text-slate-900">Cisco Systems</h4>
-                                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Sep 2017 &ndash; Apr 2024</span>
+                                <h4 class="text-lg font-extrabold text-indigo-950">Cisco Systems</h4>
+                                <span class="text-[10px] font-black text-indigo-300 uppercase tracking-widest">Sep 2017 &ndash; Apr 2024</span>
                             </div>
-                            <div class="text-sm font-bold text-slate-500 mb-3 uppercase tracking-wide">Software Engineer I</div>
-                            <div class="text-xs bg-slate-50 border border-slate-100 p-4 rounded-lg mb-4">
-                                <span class="font-black text-slate-900 uppercase tracking-tighter">Project:</span> <a href="https://www.cisco.com/c/en/us/support/cloud-systems-management/evolved-programmable-network-epn-manager/series.html" target="_blank" class="text-blue-600 font-bold hover:underline">Evolved Programmable Network (EPNM/CNC) <i class="fas fa-external-link-alt text-[10px]"></i></a>
-                                <p class="text-slate-500 mt-2 leading-relaxed">Inventory & Fault Teams: Network management solution for architecting and integrating complex programs.</p>
+                            <div class="text-sm font-bold text-indigo-500 mb-3 uppercase tracking-wide">Software Engineer I</div>
+                            <div class="text-xs bg-indigo-50/30 border border-indigo-100 p-4 rounded-lg mb-4">
+                                <span class="font-black text-indigo-950 uppercase tracking-tighter text-[10px]">Project:</span> <a href="https://www.cisco.com/c/en/us/support/cloud-systems-management/evolved-programmable-network-epn-manager/series.html" target="_blank" class="text-indigo-700 font-bold hover:underline">EPNM / CNC <i class="fas fa-external-link-alt text-[10px]"></i></a>
+                                <p class="text-slate-500 mt-2 leading-relaxed italic">Inventory & Fault Teams: Network management solution for architecting and integrating complex programs.</p>
                             </div>
-                            <ul class="list-disc list-outside ml-4 text-slate-600 space-y-2.5">
+                            <ul class="list-disc list-outside ml-4 text-slate-600 space-y-2">
                                 <li>Designed technical solutions using <strong>Java technologies</strong> in a high-velocity Agile environment.</li>
                                 <li>Debugged complex algorithm simulations to identify system failures and bottlenecks.</li>
                                 <li>Owned unit testing and version control across global EOM/SIF modules.</li>
                             </ul>
                         </div>
 
-                        <div class="relative">
-                            <div class="absolute -left-[41px] top-1 w-5 h-5 bg-white border-4 border-slate-200 rounded-full"></div>
+                        <!-- Manhattan -->
+                        <div class="relative experience-item">
+                            <div class="absolute -left-[41px] top-1 w-5 h-5 bg-white border-4 border-indigo-200 rounded-full"></div>
                             <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
-                                <h4 class="text-lg font-extrabold text-slate-900">Manhattan Associates</h4>
-                                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Aug 2015 &ndash; Sep 2017</span>
+                                <h4 class="text-lg font-extrabold text-indigo-950">Manhattan Associates</h4>
+                                <span class="text-[10px] font-black text-indigo-300 uppercase tracking-widest">Aug 2015 &ndash; Sep 2017</span>
                             </div>
-                            <div class="text-sm font-bold text-slate-500 mb-3 uppercase tracking-wide">Software Developer</div>
-                            <div class="text-xs font-semibold text-slate-400 mb-3 italic">Clients: Michael Kors, BBAB (Bed Bath and Beyond)</div>
-                            <ul class="list-disc list-outside ml-4 text-slate-600 space-y-2.5">
-                                <li>Drafted functional/technical designs for <strong>Enterprise Order Management (EOM)</strong> modules.</li>
+                            <div class="text-sm font-bold text-indigo-500 mb-3 uppercase tracking-wide">Software Developer</div>
+                            <div class="text-xs bg-indigo-50/30 border border-indigo-100 p-4 rounded-lg mb-4">
+                                <span class="font-black text-indigo-950 uppercase tracking-tighter text-[10px]">Project:</span> <a href="https://www.manh.com/en-in/our-solutions/omnichannel-software-solutions/order-management-system" target="_blank" class="text-indigo-700 font-bold hover:underline">Enterprise Order Management (EOM) <i class="fas fa-external-link-alt text-[10px]"></i></a>
+                                <p class="text-slate-500 mt-2 leading-relaxed italic">Store Inventory & Fulfillment (SIF) solutions for retail giants like Michael Kors and Bed Bath & Beyond.</p>
+                            </div>
+                            <ul class="list-disc list-outside ml-4 text-slate-600 space-y-2">
+                                <li>Drafted functional/technical designs for <strong>Enterprise Order Management</strong> modules.</li>
                                 <li>Achieved <strong>90% code coverage</strong> by implementing comprehensive unit test suites.</li>
                                 <li>Delivered mobile store solutions for retail environments, providing real-time order acknowledgment.</li>
                             </ul>
@@ -247,10 +273,10 @@
             <div class="md:col-span-4">
                 
                 <section class="mb-10">
-                    <h3 class="section-title text-[11px] font-black text-slate-900 uppercase mb-8">Technical Matrix</h3>
+                    <h3 class="section-title text-[11px] font-black text-indigo-950 uppercase mb-8">Technical Matrix</h3>
                     <div class="space-y-6">
                         <div>
-                            <span class="block text-[9px] font-black text-slate-400 uppercase tracking-wider mb-2">Languages & Frameworks</span>
+                            <span class="block text-[9px] font-black text-indigo-300 uppercase tracking-wider mb-2">Languages & Frameworks</span>
                             <div class="flex flex-wrap gap-2">
                                 <span class="skill-tag">Java 8, 17</span>
                                 <span class="skill-tag">J2EE</span>
@@ -260,7 +286,7 @@
                             </div>
                         </div>
                         <div>
-                            <span class="block text-[9px] font-black text-slate-400 uppercase tracking-wider mb-2">Infrastructure & DB</span>
+                            <span class="block text-[9px] font-black text-indigo-300 uppercase tracking-wider mb-2">Infrastructure & DB</span>
                             <div class="flex flex-wrap gap-2">
                                 <span class="skill-tag">Docker</span>
                                 <span class="skill-tag">Oracle</span>
@@ -271,7 +297,7 @@
                             </div>
                         </div>
                         <div>
-                            <span class="block text-[9px] font-black text-slate-400 uppercase tracking-wider mb-2">Engineering Tools</span>
+                            <span class="block text-[9px] font-black text-indigo-300 uppercase tracking-wider mb-2">Engineering Tools</span>
                             <div class="flex flex-wrap gap-2">
                                 <span class="skill-tag">Git</span>
                                 <span class="skill-tag">Jenkins</span>
@@ -282,7 +308,7 @@
                             </div>
                         </div>
                         <div>
-                            <span class="block text-[9px] font-black text-slate-400 uppercase tracking-wider mb-2">CS Fundamentals</span>
+                            <span class="block text-[9px] font-black text-indigo-300 uppercase tracking-wider mb-2">CS Fundamentals</span>
                             <div class="flex flex-wrap gap-2">
                                 <span class="skill-tag">Algorithms</span>
                                 <span class="skill-tag">Data Structures</span>
@@ -293,9 +319,9 @@
                     </div>
                 </section>
 
-                <section class="mb-10 bg-slate-900 text-white p-6 rounded-xl shadow-2xl border border-slate-800">
-                    <h3 class="text-[10px] font-black uppercase tracking-widest mb-5 border-b border-slate-700 pb-2">Accolades</h3>
-                    <ul class="space-y-5 text-[11px] font-medium text-slate-300">
+                <section class="mb-10 bg-indigo-950 text-white p-6 rounded-xl shadow-2xl border border-indigo-900 accolades-box">
+                    <h3 class="text-[10px] font-black uppercase tracking-widest mb-5 border-b border-indigo-800 pb-2">Accolades</h3>
+                    <ul class="space-y-5 text-[11px] font-medium text-indigo-100">
                         <li class="flex gap-3">
                             <i class="fas fa-star text-amber-400 shrink-0"></i>
                             <span>Awarded for proficiently integrating <strong>Swagger API</strong> across 4 Microservices.</span>
@@ -310,21 +336,21 @@
                         </li>
                         <li class="flex gap-3">
                             <i class="fas fa-check-circle text-amber-400 shrink-0"></i>
-                            <span>swiftly resolved critical high-priority production bugs and patches.</span>
+                            <span>Swiftly resolved critical high-priority production bugs and patches.</span>
                         </li>
                     </ul>
                 </section>
 
-                <section>
-                    <h3 class="section-title text-[11px] font-black text-slate-900 uppercase mb-8">Education</h3>
-                    <div class="space-y-6">
+                <section class="education-item">
+                    <h3 class="section-title text-[11px] font-black text-indigo-950 uppercase mb-8">Education</h3>
+                    <div class="space-y-6 text-slate-600">
                         <div class="group">
-                            <h4 class="font-black text-slate-900 text-xs group-hover:text-blue-600 transition">PGDAC</h4>
-                            <p class="text-xs text-slate-500 font-medium italic mt-1 leading-snug">CDAC Pune | 2015</p>
+                            <h4 class="font-black text-indigo-950 text-xs group-hover:text-indigo-600 transition">PGDAC</h4>
+                            <p class="text-xs font-medium italic mt-1 leading-snug">CDAC Pune | 2015</p>
                         </div>
                         <div class="group">
-                            <h4 class="font-black text-slate-900 text-xs group-hover:text-blue-600 transition">B.Tech</h4>
-                            <p class="text-xs text-slate-500 font-medium italic leading-snug mt-1">Sam Higginbottom University of Agriculture, Tech & Sciences | 2014</p>
+                            <h4 class="font-black text-indigo-950 text-xs group-hover:text-indigo-600 transition">B.Tech</h4>
+                            <p class="text-xs font-medium italic leading-snug mt-1">Sam Higginbottom University of Agriculture, Tech & Sciences | 2014</p>
                         </div>
                     </div>
                 </section>
@@ -333,7 +359,7 @@
         </div>
     </main>
 
-    <footer class="no-print text-center text-slate-400 text-[10px] pb-12 uppercase tracking-widest font-black">
+    <footer class="no-print text-center text-indigo-300 text-[10px] pb-12 uppercase tracking-widest font-black">
         Prateek Hoori Lal &bull; Portfolio 2026 &bull; Java Architect
     </footer>
 </body>
