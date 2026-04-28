@@ -11,13 +11,17 @@
         
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+            background-color: #f1f5f9;
             color: #1e293b;
             line-height: 1.5;
         }
 
-        /* Print styling to ensure it generates a perfect PDF */
+        /* Print styling to ensure it generates a perfect PDF without cutting */
         @media print {
+            @page {
+                margin: 10mm;
+                size: A4;
+            }
             body {
                 background-color: white;
                 -webkit-print-color-adjust: exact !important;
@@ -26,20 +30,30 @@
             .a4-container {
                 box-shadow: none !important;
                 margin: 0 !important;
-                padding: 0 !important;
+                padding: 5mm 10mm !important; /* Increased padding for print */
                 max-width: 100% !important;
                 border: none !important;
+                width: 100% !important;
             }
             .no-print {
                 display: none !important;
             }
             .experience-line {
                 display: block !important;
-                border-left: 1px solid #e2e8f0 !important;
+                border-left: 1px solid #cbd5e1 !important;
             }
             a {
                 text-decoration: none !important;
                 color: #1e293b !important;
+            }
+            .skill-tag {
+                background-color: #f8fafc !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+            /* Maintain circular photo on print */
+            .profile-photo {
+                border-radius: 50% !important;
+                border: 2px solid #e2e8f0 !important;
             }
         }
         
@@ -48,13 +62,13 @@
             max-width: 210mm;
             margin: 2rem auto;
             background: white;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
             border: 1px solid #e2e8f0;
             position: relative;
         }
 
         .section-title {
-            letter-spacing: 0.1em;
+            letter-spacing: 0.15em;
             position: relative;
             display: inline-block;
         }
@@ -62,244 +76,255 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -6px;
             left: 0;
-            width: 40px;
-            height: 2px;
+            width: 32px;
+            height: 3px;
             background-color: #0f172a;
         }
 
         .skill-tag {
-            background-color: #f1f5f9;
-            border: 1px solid #e2e8f0;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 500;
+            background-color: #f8fafc;
+            border: 1px solid #f1f5f9;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
             color: #475569;
+            display: inline-block;
         }
 
         .ex-tag {
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
-            color: #64748b;
-            font-weight: 700;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            color: #94a3b8;
+            font-weight: 800;
             text-transform: uppercase;
+        }
+
+        /* Optimized Profile Photo (Far Right) */
+        .profile-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%; /* Make it circular */
+            object-fit: cover;
+            /* Beautification: Stylized shadow and clean border */
+            border: 4px solid white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            background-color: #f8fafc;
+        }
+        
+        /* Placeholder Styling (if image fails) */
+        .profile-photo-placeholder {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background-color: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-center;
+            color: #94a3b8;
+            font-size: 3rem;
         }
     </style>
 </head>
 <body class="antialiased selection:bg-slate-200 selection:text-slate-900">
 
-    <!-- Floating Action Button -->
     <div class="fixed top-6 right-6 no-print z-50">
-        <button onclick="window.print()" class="bg-slate-900 hover:bg-black text-white font-semibold py-3 px-6 rounded-full shadow-2xl transition duration-300 flex items-center gap-2 transform hover:scale-105 active:scale-95">
-            <i class="fas fa-file-pdf"></i> Generate PDF
+        <button onclick="window.print()" class="bg-slate-900 hover:bg-black text-white font-bold py-3.5 px-8 rounded-full shadow-2xl transition duration-300 flex items-center gap-2 transform hover:scale-105 active:scale-95">
+            <i class="fas fa-file-pdf"></i> Save PDF
         </button>
     </div>
 
-    <main class="a4-container p-10 sm:p-14 md:p-16 text-sm">
+    <main class="a4-container p-8 sm:p-12 md:p-14 text-[13px]">
         
-        <!-- Header -->
-        <header class="border-b-4 border-slate-900 pb-8 mb-8">
-            <div class="flex flex-col md:flex-row justify-between items-start md:items-end">
-                <div class="flex-1">
-                    <div class="ex-tag mb-1 tracking-[0.2em]">Ex-Cisco / Ex-HCL / Ex-Manh</div>
-                    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tighter uppercase leading-none mb-3">Prateek Hoori Lal</h1>
-                    <div class="flex items-center gap-3">
-                        <h2 class="text-lg font-semibold text-slate-500 uppercase tracking-widest">Senior Software Engineer</h2>
-                        <span class="h-4 w-[2px] bg-slate-300"></span>
-                        <span class="text-slate-500 font-medium whitespace-nowrap">9.5+ Years Exp</span>
-                    </div>
-                </div>
+        <header class="border-b-4 border-slate-900 pb-10 mb-10">
+            <div class="flex flex-col md:flex-row items-center md:items-stretch gap-10">
                 
-                <div class="mt-6 md:mt-0 flex flex-col items-start md:items-end gap-3 text-slate-600 font-medium">
-                    <div class="flex items-center gap-4">
-                        <a href="https://www.linkedin.com/in/prateek-lal-aa362963/" target="_blank" class="text-[#0077b5] text-2xl hover:scale-110 transition-transform duration-200" title="LinkedIn Profile">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <div class="h-8 w-[1px] bg-slate-200 no-print"></div>
-                        <div class="flex flex-col items-start md:items-end gap-1">
-                             <a href="mailto:prateekhlal@outlook.com" class="hover:text-slate-900 flex items-center gap-2 transition text-xs">
-                                prateekhlal@outlook.com <i class="fas fa-envelope text-slate-400"></i>
-                            </a>
-                            <span class="flex items-center gap-2 text-xs">
-                                +91-9148791331 <i class="fas fa-phone text-slate-400"></i>
-                            </span>
+                <div class="flex-1 text-center md:text-left flex flex-col justify-between">
+                    <div>
+                        <div class="ex-tag mb-2">Ex-Cisco / Ex-HCL / Ex-Manh</div>
+                        <h1 class="text-4xl sm:text-5xl font-black text-slate-900 tracking-tighter uppercase leading-none mb-3">Prateek Hoori Lal</h1>
+                        <div class="flex flex-wrap justify-center md:justify-start items-center gap-3 mb-6">
+                            <h2 class="text-lg font-bold text-slate-500 uppercase tracking-widest">Senior Software Engineer</h2>
+                            <span class="h-4 w-[2px] bg-slate-300 hidden md:block"></span>
+                            <span class="text-slate-400 font-bold tracking-tight uppercase whitespace-nowrap">9.5+ Years Experience</span>
                         </div>
                     </div>
+                    
+                    <div class="flex flex-col md:flex-row items-center md:items-center gap-x-4 gap-y-2 text-slate-600 font-semibold border-t border-slate-100 pt-6">
+                        <a href="mailto:prateekhlal@outlook.com" class="hover:text-slate-900 flex items-center gap-2 transition text-xs">
+                            <i class="fas fa-envelope text-slate-400"></i> prateekhlal@outlook.com
+                        </a>
+                        <span class="text-slate-200 hidden md:inline">|</span>
+                        <span class="flex items-center gap-2 text-xs">
+                            <i class="fas fa-phone text-slate-400"></i> +91-9148791331
+                        </a>
+                        <span class="text-slate-200 hidden md:inline">|</span>
+                        <a href="https://www.linkedin.com/in/prateek-lal-aa362963/" target="_blank" class="hover:text-slate-900 flex items-center gap-2 transition text-xs" title="LinkedIn Profile">
+                            <i class="fab fa-linkedin text-[#0077b5]"></i> Profile
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex-shrink-0 flex items-center justify-center pt-6 md:pt-0">
+                    <img src="profile.jpg" alt="Prateek Hoori Lal" class="profile-photo" onerror="this.onerror=null;this.parentElement.innerHTML='<div class=\'profile-photo-placeholder\'><i class=\'fas fa-user\'></i></div>';">
                 </div>
             </div>
         </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
             
-            <!-- Left Side -->
             <div class="md:col-span-8">
                 
-                <!-- Summary -->
-                <section class="mb-8">
-                    <h3 class="section-title text-xs font-black text-slate-900 uppercase mb-4">Professional Profile</h3>
+                <section class="mb-10">
+                    <h3 class="section-title text-[11px] font-black text-slate-900 uppercase mb-5">Professional Profile</h3>
                     <p class="text-slate-600 leading-relaxed text-justify">
-                        Energy-driven Professional offering over <strong>9.5 years</strong> of rich and qualitative experience in Software Development, Java, and Spring Boot. Demonstrated expertise in Algorithms, Data Structures, OOP, and Design Patterns, coupled with code fixes and enhancements for future releases. Proficient in managing end-to-end SDLC from requirement gathering to deployment.
+                        Energy-driven Professional offering over <strong>9.5 years</strong> of rich and qualitative experience in Software Development, Java, and Spring Boot. Demonstrated expertise in Algorithms, Data Structures, OOP, and Design Patterns. Proficient in managing end-to-end SDLC from requirement gathering to high-performance deployment.
                     </p>
                 </section>
 
-                <!-- Experience -->
-                <section class="mb-8">
-                    <h3 class="section-title text-xs font-black text-slate-900 uppercase mb-6">Work Experience</h3>
+                <section class="mb-10">
+                    <h3 class="section-title text-[11px] font-black text-slate-900 uppercase mb-8">Work Experience</h3>
                     
-                    <div class="relative pl-6 experience-line border-l border-slate-200">
-                        <!-- HCL -->
-                        <div class="mb-10 relative">
-                            <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-white border-4 border-slate-900 rounded-full"></div>
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h4 class="text-base font-bold text-slate-900">HCL Software</h4>
-                                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter">Aug 2024 &ndash; Dec 2025</span>
+                    <div class="relative pl-8 experience-line border-l-2 border-slate-100">
+                        <div class="mb-12 relative">
+                            <div class="absolute -left-[41px] top-1 w-5 h-5 bg-white border-4 border-slate-900 rounded-full"></div>
+                            <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
+                                <h4 class="text-lg font-extrabold text-slate-900">HCL Software</h4>
+                                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Aug 2024 &ndash; Dec 2025</span>
                             </div>
-                            <div class="text-sm font-bold text-slate-600 mb-2">Software Engineer III</div>
-                            <div class="text-xs bg-slate-50 border border-slate-100 p-3 rounded mb-3">
-                                <span class="font-bold text-slate-900">Project:</span> <a href="https://www.hcl-software.com/devops-test/offerings/devops-test-ui" target="_blank" class="text-blue-600 underline">DevOps Test UI (DTUI)</a>
-                                <p class="text-slate-500 mt-1 italic">Automated testing solution for UI, API, performance, and functional testing within DevOps pipelines.</p>
+                            <div class="text-sm font-bold text-slate-500 mb-3 uppercase tracking-wide">Software Engineer III</div>
+                            <div class="text-xs bg-slate-50 border border-slate-100 p-4 rounded-lg mb-4">
+                                <span class="font-black text-slate-900 uppercase tracking-tighter">Project:</span> <a href="https://www.hcl-software.com/devops-test/offerings/devops-test-ui" target="_blank" class="text-blue-600 font-bold hover:underline">HCL DevOps Test UI (DTUI) <i class="fas fa-external-link-alt text-[10px]"></i></a>
+                                <p class="text-slate-500 mt-2 leading-relaxed">Automated testing solution designed to improve continuous testing, efficiency, and integration with DevOps processes.</p>
                             </div>
-                            <ul class="list-disc list-outside ml-4 text-slate-600 space-y-2 text-[13px]">
-                                <li>Design, develop, and maintain core <strong>Java-based features</strong> ensuring high scalability and reliability.</li>
-                                <li>Analyze user stories and conduct technical spikes to evaluate architectural solutions for complex requirements.</li>
-                                <li>Build and maintain scalable APIs and services to facilitate integration with CI/CD workflows.</li>
-                                <li>Mentor junior developers and enforce best practices via rigorous code reviews.</li>
+                            <ul class="list-disc list-outside ml-4 text-slate-600 space-y-2.5">
+                                <li>Architected and maintained core <strong>Java-based modules</strong> for maximum scalability.</li>
+                                <li>Conducted technical spikes to evaluate architectural alignment with long-term roadmap.</li>
+                                <li>Developed and optimized scalable APIs for seamless <strong>CI/CD integration</strong>.</li>
+                                <li>Mentored developers and led code reviews to ensure top-tier software quality.</li>
                             </ul>
                         </div>
 
-                        <!-- Cisco -->
-                        <div class="mb-10 relative">
-                            <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-white border-4 border-slate-400 rounded-full"></div>
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h4 class="text-base font-bold text-slate-900">Cisco Systems</h4>
-                                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter">Sep 2017 &ndash; Apr 2024</span>
+                        <div class="mb-12 relative">
+                            <div class="absolute -left-[41px] top-1 w-5 h-5 bg-white border-4 border-slate-400 rounded-full"></div>
+                            <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
+                                <h4 class="text-lg font-extrabold text-slate-900">Cisco Systems</h4>
+                                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Sep 2017 &ndash; Apr 2024</span>
                             </div>
-                            <div class="text-sm font-bold text-slate-600 mb-2">Software Engineer I</div>
-                            <div class="text-xs bg-slate-50 border border-slate-100 p-3 rounded mb-3">
-                                <span class="font-bold text-slate-900">Project:</span> <a href="https://www.cisco.com/c/en/us/support/cloud-systems-management/evolved-programmable-network-epn-manager/series.html" target="_blank" class="text-blue-600 underline">EPNM / CNC (Inventory & Fault Teams)</a>
-                                <p class="text-slate-500 mt-1 italic">Network management solution for architecting and integrating complex software programs.</p>
+                            <div class="text-sm font-bold text-slate-500 mb-3 uppercase tracking-wide">Software Engineer I</div>
+                            <div class="text-xs bg-slate-50 border border-slate-100 p-4 rounded-lg mb-4">
+                                <span class="font-black text-slate-900 uppercase tracking-tighter">Project:</span> <a href="https://www.cisco.com/c/en/us/support/cloud-systems-management/evolved-programmable-network-epn-manager/series.html" target="_blank" class="text-blue-600 font-bold hover:underline">Evolved Programmable Network (EPNM/CNC) <i class="fas fa-external-link-alt text-[10px]"></i></a>
+                                <p class="text-slate-500 mt-2 leading-relaxed">Inventory & Fault Teams: Network management solution for architecting and integrating complex programs.</p>
                             </div>
-                            <ul class="list-disc list-outside ml-4 text-slate-600 space-y-2 text-[13px]">
-                                <li>Architected software solutions using Java technologies, following Agile methodology for development and debugging.</li>
-                                <li>Conducted algorithm simulations to identify failures and optimized product performance.</li>
-                                <li>Managed unit testing, version control, and developed requirements for global clients across EOM and SIF products.</li>
+                            <ul class="list-disc list-outside ml-4 text-slate-600 space-y-2.5">
+                                <li>Designed technical solutions using <strong>Java technologies</strong> in a high-velocity Agile environment.</li>
+                                <li>Debugged complex algorithm simulations to identify system failures and bottlenecks.</li>
+                                <li>Owned unit testing and version control across global EOM/SIF modules.</li>
                             </ul>
                         </div>
 
-                        <!-- Manhattan -->
                         <div class="relative">
-                            <div class="absolute -left-[31px] top-1.5 w-4 h-4 bg-white border-4 border-slate-300 rounded-full"></div>
-                            <div class="flex justify-between items-baseline mb-1">
-                                <h4 class="text-base font-bold text-slate-900">Manhattan Associates</h4>
-                                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-tighter">Aug 2015 &ndash; Sep 2017</span>
+                            <div class="absolute -left-[41px] top-1 w-5 h-5 bg-white border-4 border-slate-200 rounded-full"></div>
+                            <div class="flex flex-wrap justify-between items-baseline gap-2 mb-1">
+                                <h4 class="text-lg font-extrabold text-slate-900">Manhattan Associates</h4>
+                                <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest">Aug 2015 &ndash; Sep 2017</span>
                             </div>
-                            <div class="text-sm font-bold text-slate-600 mb-2">Software Developer</div>
-                            <div class="text-xs italic text-slate-500 mb-2">Clients: Michael Kors, BBAB (Bed Bath and Beyond)</div>
-                            <ul class="list-disc list-outside ml-4 text-slate-600 space-y-2 text-[13px]">
-                                <li>Prepared functional and technical design documents for <strong>Enterprise Order Management (EOM)</strong>.</li>
-                                <li>Increased code coverage from minimal levels to <strong>90%</strong> via comprehensive unit testing.</li>
-                                <li>Delivered mobile-ready store inventory solutions for real-time order acknowledgment and status updates.</li>
+                            <div class="text-sm font-bold text-slate-500 mb-3 uppercase tracking-wide">Software Developer</div>
+                            <div class="text-xs font-semibold text-slate-400 mb-3 italic">Clients: Michael Kors, BBAB (Bed Bath and Beyond)</div>
+                            <ul class="list-disc list-outside ml-4 text-slate-600 space-y-2.5">
+                                <li>Drafted functional/technical designs for <strong>Enterprise Order Management (EOM)</strong> modules.</li>
+                                <li>Achieved <strong>90% code coverage</strong> by implementing comprehensive unit test suites.</li>
+                                <li>Delivered mobile store solutions for retail environments, providing real-time order acknowledgment.</li>
                             </ul>
                         </div>
                     </div>
                 </section>
             </div>
 
-            <!-- Right Side -->
             <div class="md:col-span-4">
                 
-                <!-- Technical Skills -->
                 <section class="mb-10">
-                    <h3 class="section-title text-xs font-black text-slate-900 uppercase mb-6">Technical Skills</h3>
-                    <div class="space-y-5">
+                    <h3 class="section-title text-[11px] font-black text-slate-900 uppercase mb-8">Technical Matrix</h3>
+                    <div class="space-y-6">
                         <div>
-                            <span class="block text-[10px] font-black text-slate-400 uppercase tracking-wider mb-2">Languages</span>
+                            <span class="block text-[9px] font-black text-slate-400 uppercase tracking-wider mb-2">Languages & Frameworks</span>
                             <div class="flex flex-wrap gap-2">
                                 <span class="skill-tag">Java 8, 17</span>
                                 <span class="skill-tag">J2EE</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="block text-[10px] font-black text-slate-400 uppercase tracking-wider mb-2">Frameworks</span>
-                            <div class="flex flex-wrap gap-2">
                                 <span class="skill-tag">Spring Boot</span>
                                 <span class="skill-tag">Hibernate</span>
                                 <span class="skill-tag">Kafka</span>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="block text-[9px] font-black text-slate-400 uppercase tracking-wider mb-2">Infrastructure & DB</span>
+                            <div class="flex flex-wrap gap-2">
                                 <span class="skill-tag">Docker</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="block text-[10px] font-black text-slate-400 uppercase tracking-wider mb-2">DBMS</span>
-                            <div class="flex flex-wrap gap-2">
                                 <span class="skill-tag">Oracle</span>
-                                <span class="skill-tag">DB2</span>
                                 <span class="skill-tag">Postgres</span>
-                            </div>
-                        </div>
-                        <div>
-                            <span class="block text-[10px] font-black text-slate-400 uppercase tracking-wider mb-2">Servers</span>
-                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">DB2</span>
                                 <span class="skill-tag">WebSphere</span>
                                 <span class="skill-tag">JBoss</span>
                             </div>
                         </div>
                         <div>
-                            <span class="block text-[10px] font-black text-slate-400 uppercase tracking-wider mb-2">DevOps & Tools</span>
+                            <span class="block text-[9px] font-black text-slate-400 uppercase tracking-wider mb-2">Engineering Tools</span>
                             <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">Git</span>
                                 <span class="skill-tag">Jenkins</span>
                                 <span class="skill-tag">Maven</span>
-                                <span class="skill-tag">Git / Bitbucket</span>
                                 <span class="skill-tag">IntelliJ</span>
+                                <span class="skill-tag">Bitbucket</span>
                                 <span class="skill-tag">Eclipse</span>
                             </div>
                         </div>
                         <div>
-                            <span class="block text-[10px] font-black text-slate-400 uppercase tracking-wider mb-2">Areas of Interest</span>
+                            <span class="block text-[9px] font-black text-slate-400 uppercase tracking-wider mb-2">CS Fundamentals</span>
                             <div class="flex flex-wrap gap-2">
-                                <span class="skill-tag">Data Structures</span>
                                 <span class="skill-tag">Algorithms</span>
+                                <span class="skill-tag">Data Structures</span>
                                 <span class="skill-tag">Design Patterns</span>
+                                <span class="skill-tag">OOP</span>
                             </div>
                         </div>
                     </div>
                 </section>
 
-                <!-- Accolades -->
-                <section class="mb-10 bg-slate-900 text-white p-6 rounded-lg shadow-xl">
-                    <h3 class="text-xs font-black uppercase tracking-widest mb-4 border-b border-slate-700 pb-2">Accolades</h3>
-                    <ul class="space-y-4 text-[12px]">
+                <section class="mb-10 bg-slate-900 text-white p-6 rounded-xl shadow-2xl border border-slate-800">
+                    <h3 class="text-[10px] font-black uppercase tracking-widest mb-5 border-b border-slate-700 pb-2">Accolades</h3>
+                    <ul class="space-y-5 text-[11px] font-medium text-slate-300">
                         <li class="flex gap-3">
-                            <i class="fas fa-star text-yellow-400 mt-1"></i>
+                            <i class="fas fa-star text-amber-400 shrink-0"></i>
                             <span>Awarded for proficiently integrating <strong>Swagger API</strong> across 4 Microservices.</span>
                         </li>
                         <li class="flex gap-3">
-                            <i class="fas fa-bolt text-yellow-400 mt-1"></i>
-                            <span>Implemented Rate Limiter; reduced event influx by <strong>45%</strong>.</span>
+                            <i class="fas fa-bolt text-amber-400 shrink-0"></i>
+                            <span>Reduced event influx by <strong>45%</strong> via custom custom Rate Limiter.</span>
                         </li>
                         <li class="flex gap-3">
-                            <i class="fas fa-shield-alt text-yellow-400 mt-1"></i>
+                            <i class="fas fa-user-shield text-amber-400 shrink-0"></i>
                             <span>Deployed <strong>XStream Security Framework</strong> with Global Israel Team.</span>
                         </li>
                         <li class="flex gap-3">
-                            <i class="fas fa-check-circle text-yellow-400 mt-1"></i>
-                            <span>Acknowledged for swift resolution of critical production bugs.</span>
+                            <i class="fas fa-check-circle text-amber-400 shrink-0"></i>
+                            <span>swiftly resolved critical high-priority production bugs and patches.</span>
                         </li>
                     </ul>
                 </section>
 
-                <!-- Education -->
                 <section>
-                    <h3 class="section-title text-xs font-black text-slate-900 uppercase mb-6">Education</h3>
-                    <div class="space-y-5">
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-[13px]">PGDAC</h4>
-                            <p class="text-xs text-slate-500 italic">CDAC Pune | 2015</p>
+                    <h3 class="section-title text-[11px] font-black text-slate-900 uppercase mb-8">Education</h3>
+                    <div class="space-y-6">
+                        <div class="group">
+                            <h4 class="font-black text-slate-900 text-xs group-hover:text-blue-600 transition">PGDAC</h4>
+                            <p class="text-xs text-slate-500 font-medium italic mt-1 leading-snug">CDAC Pune | 2015</p>
                         </div>
-                        <div>
-                            <h4 class="font-bold text-slate-900 text-[13px]">B.Tech</h4>
-                            <p class="text-xs text-slate-500 italic leading-tight">Sam Higginbottom Univ. of Agriculture | 2014</p>
+                        <div class="group">
+                            <h4 class="font-black text-slate-900 text-xs group-hover:text-blue-600 transition">B.Tech</h4>
+                            <p class="text-xs text-slate-500 font-medium italic leading-snug mt-1">Sam Higginbottom University of Agriculture, Tech & Sciences | 2014</p>
                         </div>
                     </div>
                 </section>
@@ -308,8 +333,8 @@
         </div>
     </main>
 
-    <footer class="no-print text-center text-slate-400 text-[10px] pb-10 uppercase tracking-widest">
-        Digital Resume &bull; Prateek Hoori Lal &bull; 2026
+    <footer class="no-print text-center text-slate-400 text-[10px] pb-12 uppercase tracking-widest font-black">
+        Prateek Hoori Lal &bull; Portfolio 2026 &bull; Java Architect
     </footer>
 </body>
 </html>
